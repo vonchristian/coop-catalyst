@@ -1,0 +1,24 @@
+<div class="container">
+   <div class="card">
+
+  <h4>New Loan Product</h4>
+<hr>
+<%=simple_form_for @loan_product, url: :loans_section_loan_products do |f| %>
+<div class="row">
+<div class="col-md-6">
+</div>
+<div class="col-md-5">
+<%=f.input :name %>
+
+<%=f.input :term, label: "Term (Months)", placeholder: "Number of Months"%>
+
+<%=f.simple_fields_for :interest_rate do |ff| %>
+<%=ff.input :rate, label: "Interest Rate" %>
+<%=ff.input :recurrence, collection: LoansSection::InterestRate.recurrences.keys.to_a.map{ |a| [a.titleize, a] }, as: :radio_buttons %>
+<% end %>
+<div class="modal-footer">
+<%=f.submit "Create Loan Product", class: "btn btn-primary", data: {disable_with: "Saving Loan Product..."} %>
+</div>
+</div>
+</div>
+<% end %>

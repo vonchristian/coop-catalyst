@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507060416) do
+ActiveRecord::Schema.define(version: 20160507075612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,44 @@ ActiveRecord::Schema.define(version: 20160507060416) do
     t.index ["recorder_id"], name: "index_entries_on_recorder_id", using: :btree
   end
 
+  create_table "interest_rates", force: :cascade do |t|
+    t.integer  "loan_product_id"
+    t.decimal  "rate",            precision: 3, scale: 2
+    t.integer  "recurrence"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["loan_product_id"], name: "index_interest_rates_on_loan_product_id", using: :btree
+  end
+
+  create_table "loan_fees", force: :cascade do |t|
+    t.decimal  "rate"
+    t.string   "name"
+    t.integer  "loan_product_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["loan_product_id"], name: "index_loan_fees_on_loan_product_id", using: :btree
+  end
+
+  create_table "loan_products", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "term"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "loan_product_id"
+    t.decimal  "amount"
+    t.datetime "date"
+    t.integer  "approval_status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["loan_product_id"], name: "index_loans_on_loan_product_id", using: :btree
+    t.index ["user_id"], name: "index_loans_on_user_id", using: :btree
+  end
+
   create_table "occupations", force: :cascade do |t|
     t.string   "position"
     t.string   "employer"
@@ -96,5 +134,9 @@ ActiveRecord::Schema.define(version: 20160507060416) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "interest_rates", "loan_products"
+  add_foreign_key "loan_fees", "loan_products"
+  add_foreign_key "loans", "loan_products"
+  add_foreign_key "loans", "users"
   add_foreign_key "occupations", "users"
 end
