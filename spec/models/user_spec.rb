@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
   describe "associations" do
     it { is_expected.to have_one :occupation }
+    it { is_expected.to have_one :role }
     it { is_expected.to have_many :loans }
   end
 

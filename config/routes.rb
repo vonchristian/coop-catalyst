@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :entries, except:[:destroy], module: :transactions
   end
   resources :users
-  
+
   namespace :members do
     resources :occupations
   end
@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     end
     resources :loans, except:[:destroy]
   end
+  resources :roles
 end

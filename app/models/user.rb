@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :occupation, class_name: "Members::Occupation"
+  has_one :role
   has_many :loans, class_name: "LoansSection::Loan"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
