@@ -1,0 +1,6 @@
+<%= simple_form_for @account, url: :accounting_accounts do |f| %>
+  <%= f.input :code %>
+  <%= f.input :name %>
+  <%= f.input :type, collection: Accounting::Accounts::Account.types, as: :radio_buttons %>
+  <%=f.submit "Save Account" %>
+<% end %>

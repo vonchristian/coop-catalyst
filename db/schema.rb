@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506145358) do
+ActiveRecord::Schema.define(version: 20160507003201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 20160506145358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_accounts_on_type", using: :btree
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.string   "reference_number"
+    t.datetime "date"
+    t.integer  "entriable_id"
+    t.string   "entriable_type"
+    t.string   "description"
+    t.integer  "recorder_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["entriable_id"], name: "index_entries_on_entriable_id", using: :btree
+    t.index ["entriable_type"], name: "index_entries_on_entriable_type", using: :btree
+    t.index ["recorder_id"], name: "index_entries_on_recorder_id", using: :btree
   end
 
 end

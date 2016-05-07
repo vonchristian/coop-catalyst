@@ -11,7 +11,7 @@ feature 'Account management', type: :feature do
     click_link "New Account"
     fill_in "Name", with: "Accounts Payable"
     fill_in "Code", with: "001"
-    choose "Accounting::Asset"
+    choose "Accounting::Accounts::Asset"
 
     click_button "Save Account"
 
