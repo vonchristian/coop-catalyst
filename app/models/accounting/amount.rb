@@ -6,7 +6,7 @@ module Accounting
     validates_presence_of :type, :amount, :entry, :account
 
     def account_name=(name)
-      self.account = Account.find_by_name(name)
+      self.account = Accounting::Accounts::Account.find_by_name(name)
     end
 
     protected

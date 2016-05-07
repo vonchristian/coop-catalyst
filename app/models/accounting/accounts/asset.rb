@@ -1,6 +1,6 @@
-module Accounting
-  module Accounts
-    class Asset < Accounts::Account
+# module Accounting
+#   module Accounts
+    class Accounting::Accounts::Asset < Accounting::Accounts::Account
       # self.normal_credit_balance = false
 
       def balance(options={})
@@ -11,5 +11,5 @@ module Accounting
         super(options)
       end
     end
-  end
-end
+#   end
+# end
