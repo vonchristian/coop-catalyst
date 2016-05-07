@@ -9,4 +9,9 @@ RSpec.describe User, :type => :model do
     it { is_expected.to validate_presence_of :password }
     it { is_expected.to validate_confirmation_of :password}
   end
+  it "#full_name" do
+    user = build(:user, first_name: "Von Christian", middle_name: "Pinosan", last_name: "Halip")
+
+    expect(user.full_name).to eql "Von Christian P. Halip"
+  end
 end

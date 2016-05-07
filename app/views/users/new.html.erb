@@ -1,0 +1,34 @@
+<div class="col-md-8">
+  <div class="card">
+    <div class="header">
+      <h4 class="title"> Member Details </h4>
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-5">
+          <%= simple_form_for @user do |f| %>
+            <%=f.error_notification %>
+            <%if @user.photo.blank? %>
+              <center><%=image_tag("default-small.png", :class=>"img-square center-block ") %></center>
+            <% else %>
+              <center><%= image_tag @user.photo.url(:large), class: 'center-block img-responsive img-rounded'%></center>
+            <% end %>
+            <center><%= f.input :photo, class: 'center-block', as: :file %></center>
+            <%=f.input :first_name, autofocus: true, input_html: {oninput: "generate_email()"} %>
+            <%=f.input :middle_name %>
+            <%=f.input :last_name, input_html: {oninput: "generate_email()"} %>
+            <%=f.input :email, placeholder: '@alfalfa.com' %>
+            <%=f.input :password %>
+            <%=f.input :password_confirmation %>
+            <div class="modal-footer">
+              <%=f.submit 'Register Member', class: 'btn btn-primary', data: {disable_with: "Saving Member..."} %>
+              <span class="pull-left"><%= link_to "Cancel", @user,  class: "btn btn-default"%></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

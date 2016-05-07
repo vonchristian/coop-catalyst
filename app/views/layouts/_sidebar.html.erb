@@ -1,4 +1,4 @@
-<div class="sidebar" data-background-color="white" data-active-color="primary">
+<div class="sidebar" data-background-color="white" data-active-color="success">
 
  <!--
  Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
@@ -7,7 +7,7 @@
 
    <div class="sidebar-wrapper">
          <div class="logo">
-             <a href="http://www.creative-tim.com" class="simple-text">
+             <a href="/" class="simple-text">
                  Coop Catalyst
              </a>
          </div>
@@ -19,50 +19,45 @@
                      <p>Dashboard</p>
                  </a>
              </li>
-             <li class="<%#="active" if current_page? taxpayers_path %>">
-                 <a href="/taxpayers">
-                     <i class="fa fa-users"></i>
-                     <p>Taxpayers</p>
+             <li class="<%#="active" if current_page? dashboard_path %>">
+                  <a href="/users">
+                      <i class="fa fa-users fa-icon"></i>
+                      <p>Members</p>
+                  </a>
+              </li>
+             <li class="<%="active" if current_page? accounting_accounts_path %>">
+                 <a href="/accounting/accounts">
+                     <i class="fa fa-file-text-o"></i>
+                     <p>General Ledger</p>
                  </a>
              </li>
               <li class="<%#="active" if current_page? businesses_path %>">
                  <a href="/businesses">
                      <i class="fa fa-building"></i>
-                     <p>Businesses</p>
+                     <p>Balance Sheet</p>
                  </a>
              </li>
              <li class="<%#="active" if current_page? entries_path %>">
                 <a href="/entries">
                     <i class="fa fa-money"></i>
-                    <p>Payments</p>
+                    <p>Income Statement</p>
                 </a>
             </li>
 
 
              <li>
                  <a href="/classifications">
-                     <i class="fa fa-server"></i>
-                     <p>Industries</p>
+                     <i class="fa fa-rub"></i>
+                     <p>Cash Flow</p>
                  </a>
              </li>
-             <li class="<%#="active" if current_page? settings_path %>">
-                 <a href="/accounting/accounts">
-                     <i class="fa fa-server"></i>
-                     <p>General Ledger</p>
+             <li class="<%="active" if current_page? accounting_entries_path %>">
+                 <a href="/accounting/entries">
+                     <i class="fa fa-credit-card"></i>
+                     <p>Entries</p>
                  </a>
              </li>
-             <li class="<%#="active" if current_page? reports_path %>">
-                 <a href="/reports">
-                     <i class="fa fa-file-text"></i>
-                     <p>Reports</p>
-                 </a>
-             </li>
-             <li>
-                 <a href="notifications.html">
-                     <i class="ti-bell"></i>
-                     <p>Notifications</p>
-                 </a>
-             </li>
+
          </ul>
    </div>
  </div>
@@ -83,7 +78,7 @@
                    <%#="Businesses" if current_page?(businesses_path) %>
                    <%#="Settings" if current_page?(settings_path) %>
                    <%#="Reports" if current_page?(reports_path) %>
-                   <%#="Payments" if current_page?(entries_path) %>
+                   <%="Entries" if current_page?(accounting_entries_path) %>
                  </a>
              </div>
              <div class="collapse navbar-collapse">

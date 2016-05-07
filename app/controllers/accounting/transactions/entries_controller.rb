@@ -2,6 +2,7 @@ module Accounting
   module Transactions
     class EntriesController < ApplicationController
       def index
+        @entries = Accounting::Transactions::Entry.all.order('created_at DESC')
       end
 
       def new
@@ -27,14 +28,14 @@ module Accounting
 
       def edit
         @entry = Entry.find(params[:id])
-        authorize @entry
+        # authorize @entry
       end
 
       def update
         @entry = Entry.find(params[:id])
         # authorize @entry
         if @entry.update(entry_params)
-          redirect_to @entry, notice: "Entry updated successfully."
+          redirect_to accounting_entry_url(@entry), notice: "Entry updated successfully."
         else
           render :edit
         end
