@@ -17,6 +17,6 @@ feature 'Approving a loan', type: :feature do
     click_button "Approve Loan"
     expect(page).to have_content("approved successfully.")
     expect(page).to have_content("Salary Loan")
-    expect(page).to have_content("130000")
+    expect(page).to have_content("130,000")
   end
   end

@@ -15,4 +15,8 @@ RSpec.describe LoansSection::LoanProduct, :type => :model do
   describe "nested_attributes" do
     it { is_expected.to accept_nested_attributes_for(:interest_rate) }
   end
+
+  describe "delegations" do
+    it { is_expected.to delegate_method(:rate).to(:interest_rate)}
+  end
 end

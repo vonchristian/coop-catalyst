@@ -8,35 +8,35 @@
    <div class="sidebar-wrapper">
          <div class="logo">
              <a href="/" class="simple-text">
-                 Loans Section
+                 Human Resources
              </a>
          </div>
 
          <ul class="nav">
             <li class="<%#="active" if current_page? dashboard_path %>">
-                 <a href="/loans_section/">
+                 <a href="/dashboards/index">
                      <i class="fa fa-dashboard"></i>
                      <p>Dashboard</p>
                  </a>
              </li>
-             <li class="<%#="active" if current_page? dashboard_path %>">
-                  <a href="/loans_section/loans">
+             <li class="<%="active" if current_page? human_resources_employees_path %>">
+                  <a href="/human_resources/employees">
                       <i class="fa fa-users fa-icon"></i>
-                      <p>Loans</p>
+                      <p>Employees</p>
                   </a>
               </li>
-             <li class="<%="active" if current_page? loans_section_loan_products_path %>">
-                 <a href="/loans_section/users">
-                     <i class="fa fa-users"></i>
-                     <p>Members</p>
+             <li class="<%#="active" if current_page? accounting_accounts_path %>">
+                 <a href="/accounting/accounts">
+                     <i class="fa fa-file-text-o"></i>
+                     <p>Payroll</p>
                  </a>
-             </li>
-             <li class="<%="active" if current_page? loans_section_loan_products_path %>">
-                 <a href="/loans_section/loan_products">
-                     <i class="fa fa-bookmark"></i>
-                     <p>Loan Products</p>
-                 </a>
-             </li>
+              </li>
+              <li class="<%#="active" if current_page? accounting_accounts_path %>">
+                  <a href="/human_resources/settings">
+                      <i class="fa fa-cog"></i>
+                      <p>Settings</p>
+                  </a>
+               </li>
 
 
          </ul>

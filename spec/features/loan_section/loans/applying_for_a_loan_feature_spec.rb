@@ -18,6 +18,6 @@ feature 'Applying for a loan', type: :feature do
     click_button "Apply"
     expect(page).to have_content("created successfully.")
     expect(page).to have_content("Salary Loan")
-    expect(page).to have_content("130000")
+    expect(page).to have_content("130,000")
   end
   end

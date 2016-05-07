@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_one :occupation, class_name: "Members::Occupation"
-  has_one :role
+  accepts_nested_attributes_for :occupation
+  delegate :position, to: :occupation, allow_nil: true
   has_many :loans, class_name: "LoansSection::Loan"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,8 +17,9 @@ class User < ApplicationRecord
 
   validates :first_name, :middle_name, :last_name, presence: true
 
-  accepts_nested_attributes_for :occupation
-  delegate :position, to: :occupation, allow_nil: true
+  def self.types
+    %w(Employee Member)
+  end
   def to_s
     full_name
   end

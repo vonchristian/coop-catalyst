@@ -1,17 +1,49 @@
 <div class="row">
-  <div class="col-md-4">
-  <%=@loan.loan_product.name %>
-<%=@loan.amount %>
-<%=link_to "Approve", new_loans_section_loan_approval_path(@loan) %>
-</div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="header">
+        <h4 class="title"> Loan Details </h4>
+      </div>
+      <div class="content">
+        <%=@loan.loan_product.name %>
+        <%=number_to_currency @loan.amount %>
+        <%=link_to "Approve", new_loans_section_loan_approval_path(@loan) %>
+      </div>
+    </div>
+  </div>
+
 <div class="col-md-4">
   <div class="card">
     <div class="header">
       <h4 class="title"> Approval Status </h4>
+      <hr>
     </div>
     <div class="content">
-      <%=User.first.full_name %><br>
-      <%=User.first.position %>
+      <% HumanResources::Employee.loan_officers.each do |user| %>
+      <ul class="list-unstyled team-members">
+      <li>
+        <div class="row">
+          <div class="col-xs-3">
+            <%=image_tag(user.photo.url(:small), class: "img-circle")%>
+          </div>
+    <div class="col-xs-6">
+      <%=user.full_name %><br />
+      <%=user.role %>
+    </div>
+    <div class="col-xs-3">
+
+      <% if user.approved_loan(@loan) %>
+      <btn class="btn btn-success active btn-icon" title="Approved "><i class="fa fa-check"></i></span>
+        <% else %>
+      <%=link_to new_loans_section_loan_approval_path(@loan) do %>
+        <btn class="btn btn-warning btn-icon" title="Approve Loan"><i class="fa fa-thumbs-up"></i></btn>
+        <btn class="btn btn-danger btn-icon" title="Disapprove Loan"><i class="fa fa-thumbs-down"></i></btn>
+      <% end %>
+      <% end %>
+  </div>
+</li>
+</ul>
+      <% end %>
     </div>
   </div>
 </div>

@@ -7,5 +7,6 @@ module LoansSection
     validates :name, uniqueness: true
     validates :term, numericality: true
     accepts_nested_attributes_for :interest_rate
+    delegate :rate, to: :interest_rate
   end
 end

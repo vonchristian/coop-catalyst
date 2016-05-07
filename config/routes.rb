@@ -20,5 +20,10 @@ Rails.application.routes.draw do
     end
     resources :loans, except:[:destroy]
   end
-  resources :roles
+
+  namespace :human_resources do
+    resources :employees, except:[:destroy]
+    resources :settings, only:[:index]
+    resources :roles, except:[:destroy]
+  end
 end
