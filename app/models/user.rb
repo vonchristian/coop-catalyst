@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :first_name, :middle_name, :last_name, presence: true
 
   accepts_nested_attributes_for :occupation
-  delegate :position, to: :occupation
+  delegate :position, to: :occupation, allow_nil: true
   def full_name
     "#{first_name} #{middle_name.first.capitalize}. #{last_name}"
   end

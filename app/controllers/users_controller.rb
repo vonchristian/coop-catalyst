@@ -42,7 +42,7 @@ end
 private
   def user_params
     user_params = params[:user]
-    user_params ? user_params.permit(:photo_id, :first_name, :middle_name, :last_name,
+    user_params ? user_params.permit(:photo, :first_name, :middle_name, :last_name,
                                      :password, :password_confirmation, :email,
                                      occupation_attributes: [:employer, :employer_address, :position, :contact_number]) : {}
   end
@@ -63,7 +63,7 @@ private
 
   def save_user
     if @user.save
-      redirect_to users_path,:notice => "Member registered successfully."
+      redirect_to users_path,:notice => "Member information saved successfully."
     end
   end
   def user_scope

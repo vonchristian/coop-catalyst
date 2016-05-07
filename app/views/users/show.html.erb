@@ -15,22 +15,13 @@
         <p class="description text-center">
 
         </p>
+          <%=link_to "Update", edit_user_path(@user), class: "btn btn-primary btn-block" %>
       </div>
-      <hr>
-      <br>
-      <div class="text-center">
-        <div class="row">
-          <div class="col-md-2">
 
-          </div>
-          <div class="col-md-8">
-                <%=link_to "Update", edit_user_path(@user), class: "btn btn-primary btn-block" %>
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-        <br>
-      </div>
+
+
+
+<br>
     </div>
     <div class="card">
       <div class="header">
@@ -54,7 +45,7 @@
               </div>
               <div class="col-xs-3 text-right">
                 <%=link_to edit_members_occupation_path(@user.occupation) do %>
-                  <btn class="btn btn-sm btn-warning btn-icon"><i class="fa fa-pencil"></i></btn>
+                  <a class="btn btn-sm btn-warning btn-icon edit-occupation-link" title="Edit Occupation"><i class="fa fa-pencil"></i></a>
                 <% end %>
               </div>
             </div>
