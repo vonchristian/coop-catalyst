@@ -1,6 +1,7 @@
 module Accounting
   module Transactions
     class EntriesController < ApplicationController
+      layout "accounting"
       def index
         @entries = Accounting::Transactions::Entry.all.order('created_at DESC')
       end

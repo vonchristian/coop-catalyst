@@ -1,6 +1,7 @@
 module Accounting
   module Accounts
     class AccountsController < ApplicationController
+      layout "accounting"
       def index
         @accounts = Accounting::Accounts::Account.all
       end

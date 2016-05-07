@@ -1,5 +1,6 @@
 module LoansSection
   class LoanProductsController < ApplicationController
+    layout "loans_section"
     def index
       @loan_products = LoansSection::LoanProduct.all
     end

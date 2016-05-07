@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="header">
+          <h4 class="title">Members <span class="pull-right"><%=link_to "New Member", new_user_path, class: "btn btn-primary"%></span></h4>
+          <hr>
+      </div>
+      <div class="content">
+        <% @users.each do |user| %>
+          <ul class="list-unstyled team-members">
+            <li>
+              <div class="row">
+                <div class="col-xs-2">
+                  <div class="avatar">
+                    <%= image_tag user.photo.url(:thumb), class: "profile-user-img img-responsive img-circle", alt: "user profile picture" %>
+                  </div>
+                </div>
+                <div class="col-md 3 col-xs-10">
+                  <%=link_to user.full_name, loans_section_member_path(user) %>
+                  <br />
+                  <span><small><%=user.position %></small></span>
+                </div>
+                <div class="col-md-3 hidden-xs text-right">
+                  <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                </div>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

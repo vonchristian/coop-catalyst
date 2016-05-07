@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
   namespace :loans_section do
     resources :loan_products,only:[:index, :new, :create, :show]
+    resources :members, only:[:index, :show]
   end
 end

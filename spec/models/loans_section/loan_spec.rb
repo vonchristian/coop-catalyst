@@ -12,7 +12,7 @@ RSpec.describe LoansSection::Loan, :type => :model do
     it { is_expected.to validate_presence_of :date }
     it { is_expected.to validate_numericality_of :amount }
   end
-  
+
   describe "enum for payment status" do
     it do
       should define_enum_for(:approval_status).with([:pending, :approved, :disapproved])
