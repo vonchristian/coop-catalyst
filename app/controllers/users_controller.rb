@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def new
     build_user
-
+    build_occupation
   end
 
   def edit
@@ -42,7 +42,9 @@ end
 private
   def user_params
     user_params = params[:user]
-    user_params ? user_params.permit(:photo_id, :first_name, :middle_name, :last_name, :password, :password_confirmation, :email) : {}
+    user_params ? user_params.permit(:photo_id, :first_name, :middle_name, :last_name,
+                                     :password, :password_confirmation, :email,
+                                     occupation_attributes: [:employer, :employer_address, :position, :contact_number]) : {}
   end
   def load_users
     @users ||= user_scope.to_a
@@ -55,6 +57,10 @@ private
     # authorize @user
     @user.attributes = user_params
   end
+  def build_occupation
+    @occupation = @user.build_occupation
+  end
+
   def save_user
     if @user.save
       redirect_to users_path,:notice => "Member registered successfully."

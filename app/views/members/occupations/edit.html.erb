@@ -1,0 +1,26 @@
+<div class="col-md-8">
+  <div class="card">
+    <div class="header">
+      <h4 class="title"> Occupation Details </h4>
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-5">
+          <%= simple_form_for @occupation do |f| %>
+            <%=f.error_notification %>
+            <%=f.input :position %>
+            <%=f.input :employer %>
+            <%=f.input :employer_address %>
+            <%=f.input :contact_number %>
+            <div class="modal-footer">
+              <%=f.submit 'Update Occupation', class: 'btn btn-primary', data: {disable_with: "updating..."} %>
+              <span class="pull-left"><%= link_to "Cancel", @user,  class: "btn btn-default"%></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

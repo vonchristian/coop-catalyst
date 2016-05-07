@@ -12,13 +12,13 @@
               <div class="row">
                 <div class="col-xs-1">
                   <div class="avatar">
-                    <%= image_tag user.photo.url(:thumb), class: "profile-user-img img-responsive img-circle", alt: "taxpayer profile picture" %>
+                    <%= image_tag user.photo.url(:thumb), class: "profile-user-img img-responsive img-circle", alt: "user profile picture" %>
                   </div>
                 </div>
                 <div class="col-xs-3">
-                  <%=link_to user.first_name, user %>
+                  <%=link_to user.full_name, user %>
                   <br />
-                  <span class="text-muted"><small><%#=taxpayer.address_details %></small></span>
+                  <span><small><%=user.position %></small></span>
                 </div>
                 <div class="col-xs-3 text-right">
                   <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>

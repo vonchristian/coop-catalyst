@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :occupation, class_name: "Members::Occupation"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +13,9 @@ class User < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   validates :first_name, :middle_name, :last_name, presence: true
+
+  accepts_nested_attributes_for :occupation
+  delegate :position, to: :occupation
   def full_name
     "#{first_name} #{middle_name.first.capitalize}. #{last_name}"
   end

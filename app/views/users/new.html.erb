@@ -19,9 +19,16 @@
             <%=f.input :first_name, autofocus: true, input_html: {oninput: "generate_email()"} %>
             <%=f.input :middle_name %>
             <%=f.input :last_name, input_html: {oninput: "generate_email()"} %>
+            <%=f.simple_fields_for :occupation do |ff| %>
+              <%=ff.input :position %>
+              <%=ff.input :employer %>
+              <%=ff.input :employer_address %>
+              <%=ff.input :contact_number %>
+            <% end %>
             <%=f.input :email, placeholder: '@alfalfa.com' %>
             <%=f.input :password %>
             <%=f.input :password_confirmation %>
+
             <div class="modal-footer">
               <%=f.submit 'Register Member', class: 'btn btn-primary', data: {disable_with: "Saving Member..."} %>
               <span class="pull-left"><%= link_to "Cancel", @user,  class: "btn btn-default"%></span>
