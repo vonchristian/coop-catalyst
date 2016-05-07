@@ -1,5 +1,5 @@
 module LoansSection
-  class MembersController < ApplicationController
+  class UsersController < ApplicationController
     layout "loans_section"
     def index
       @users = User.all

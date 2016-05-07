@@ -1,0 +1,8 @@
+<%=@user.full_name %>
+<%=simple_form_for [@user, @loan], url: :loans_section_user_loans do |f| %>
+<%=f.error_notification %>
+<%=f.input :date, as: :string, input_html: { class: "datepicker" } %>
+<%=f.input :amount %>
+<%=f.input :loan_product_id, collection: LoansSection::LoanProduct.all.map{ |a| [a.name, a.id] }, as: :radio_buttons %>
+<%=f.submit "Apply", class: "btn btn-primary" %>
+<% end %>
