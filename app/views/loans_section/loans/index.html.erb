@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="header">
+        <h4 class="title"> Loans </h4>
+      </div>
+      <div class="content">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th> </th>
+              <th>Member</th>
+              <th>Loan Product </th>
+              <th>Amount </th>
+              <th> Date </th>
+              <th> Approval Status </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@loans.each do |loan| %>
+              <tr>
+                <td><%= image_tag loan.user.photo.url(:small), class: "profile-user-img img-responsive img-circle", alt: "user profile picture" %></td>
+                <td> <%=link_to loan.user, loans_section_loan_path(loan) %></td>
+                <td><%=loan.loan_product_name %></td>
+                <td><%=number_to_currency loan.amount %></td>
+                <td><%=loan.date.strftime("%B %e, %Y") %></td>
+                <td> <span class="btn btn-warning btn-icon"><%=loan.approval_status %></span></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

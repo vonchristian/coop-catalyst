@@ -5,7 +5,7 @@ class CreateLoans < ActiveRecord::Migration[5.0]
       t.belongs_to :loan_product, foreign_key: true
       t.decimal :amount
       t.datetime :date
-      t.integer :approval_status
+      t.integer :approval_status, default: 0
 
       t.timestamps
     end

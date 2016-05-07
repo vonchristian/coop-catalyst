@@ -1,2 +1,18 @@
-<%=@loan.loan_product.name %>
+<div class="row">
+  <div class="col-md-4">
+  <%=@loan.loan_product.name %>
 <%=@loan.amount %>
+<%=link_to "Approve", new_loans_section_loan_approval_path(@loan) %>
+</div>
+<div class="col-md-4">
+  <div class="card">
+    <div class="header">
+      <h4 class="title"> Approval Status </h4>
+    </div>
+    <div class="content">
+      <%=User.first.full_name %><br>
+      <%=User.first.position %>
+    </div>
+  </div>
+</div>
+</div>

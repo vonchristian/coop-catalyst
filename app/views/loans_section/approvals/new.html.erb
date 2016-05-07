@@ -1,0 +1,4 @@
+<%=simple_form_for [@loan, @approval], url: :loans_section_loan_approvals do |f| %>
+<%=f.input :date, as: :string, input_html: { class: "datepicker"} %>
+<%=f.submit "Approve Loan" %>
+<% end %>

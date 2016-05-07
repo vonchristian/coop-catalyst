@@ -5,13 +5,18 @@ Rails.application.routes.draw do
       resources :entries, except:[:destroy], module: :transactions
   end
   resources :users
+  
   namespace :members do
     resources :occupations
   end
+
   namespace :loans_section do
-    resources :loan_products,only:[:index, :new, :create, :show]
+    resources :loan_products, only:[:index, :new, :create, :show]
     resources :users, only:[:index, :show] do
       resources :loans, only:[:new, :create]
+    end
+    resources :loans, only:[:show] do
+      resources :approvals, only:[:new, :create]
     end
     resources :loans, except:[:destroy]
   end

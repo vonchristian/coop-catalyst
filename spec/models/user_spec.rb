@@ -19,6 +19,10 @@ RSpec.describe User, :type => :model do
 
     expect(user.full_name).to eql "Von Christian P. Halip"
   end
+  it ".to_s" do
+    user = build(:user, first_name: "Von Christian", middle_name: "Pinosan", last_name: "Halip")
+    expect(user.to_s).to eql "Von Christian P. Halip"
+  end
 
   describe "nested_attributes" do
     it { is_expected.to accept_nested_attributes_for :occupation }
