@@ -58,11 +58,27 @@
     <div class="card">
       <div class="header">
         <h4 class="title"> Loans
-          <span class="pull-right"><%=link_to "New Loan", new_loans_section_user_loan_path(@user) %>
+          <span class="pull-right"><%=link_to "New Loan", new_loans_section_user_loan_path(@user), class: "btn btn-primary" %></span>
         </h4>
+        <hr>
       </div>
       <div class="content">
+        <%=render 'loans_section/loans/loan', loans: @user.loans %>
       </div>
     </div>
   </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="header">
+        <h4 class="title"> Share Capital
+          <span class="pull-right"><%=link_to "Open Share Capital Account", new_user_share_capital_path(@user), class: "btn btn-primary" %></span>
+        </h4>
+        <hr>
+      </div>
+      <div class="content">
+        <%=render "share_capitals/share_capital", share_capital: @user.share_capital if @user.share_capital %>
+      </div>
+    </div>
+  </div>
+
 </div>

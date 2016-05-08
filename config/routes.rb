@@ -4,7 +4,12 @@ Rails.application.routes.draw do
       resources :accounts, except:[:destroy],module: :accounts
       resources :entries, except:[:destroy], module: :transactions
   end
-  resources :users
+  resources :users, except:[:destroy] do
+    resources :share_capitals, only:[:new, :create, :show]
+  end
+    resources :share_capitals, only:[:show] do
+      resources :capital_build_ups, only: [:new, :create], module: :share_capitals
+    end
 
   namespace :members do
     resources :occupations

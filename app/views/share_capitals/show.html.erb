@@ -1,0 +1,16 @@
+
+<%=@share_capital.account_number %>
+
+<div class="col-md-4">
+  <div class="card">
+    <div class="header">
+      <h4 class="title"> Capital Build Up
+        <span class="pull-right"> <%=link_to "New Capital Build Up", new_share_capital_capital_build_up_path(@share_capital), class: "btn btn-primary" %> </span>
+      </h4>
+      <hr>
+    </div>
+    <div class="content">
+      <%=render 'accounting/transactions/capital_build_ups/capital_build_up', capital_build_ups: @share_capital.capital_build_ups %>
+    </div>
+  </div>
+</div>

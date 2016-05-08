@@ -1,0 +1,26 @@
+<% loans.order(:date).reverse.each do |loan| %>
+  <ul class="list-unstyled team-members">
+    <li id="current_item">
+      <div class="row">
+        <div class="col-xs-3">
+
+            <span><%=number_to_currency loan.amount %></span>
+        </div>
+        <div class="col-xs-4">
+          <%=loan.loan_product.name%>
+          <br />
+          <span class="text-success"><small><%=loan.date.strftime("%B %e, %Y")%></small></span>
+        </div>
+        <div class="col-xs-2 text-left">
+          <%#=number_to_currency line_item.total_price %>
+        </div>
+        <div class="col-xs-2 text-right">
+          <%#=link_to line_item, method: :delete, confirm: 'Are you sure?' do %>
+          <span class="btn btn-danger btn-icon btn-xs"><i class="fa fa-times"></i> </span>
+          <%# end %>
+        </div>
+      </div>
+      <hr>
+    </li>
+  </ul>
+<% end %>
