@@ -1,0 +1,20 @@
+require 'rails_helper'
+
+RSpec.describe Store::Product, :type => :model do
+  describe "associations" do
+    it { is_expected.to have_many :stocks }
+  end
+  describe "validations" do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :description }
+    it { is_expected.to validate_presence_of :unit }
+    it { is_expected.to validate_presence_of :price }
+    it do
+      is_expected.to validate_numericality_of(:price).is_greater_than(0.1)
+    end
+  end
+
+  describe "nested_attributes" do
+    it { is_expected.to accept_nested_attributes_for :stocks }
+  end
+end

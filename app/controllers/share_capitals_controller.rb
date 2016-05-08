@@ -16,7 +16,7 @@ class ShareCapitalsController  < ApplicationController
   def show
     @share_capital = ShareCapital.find(params[:id])
   end
-  
+
   private
   def share_capital_params
     params.require(:share_capital).permit(:date_opened, :account_number)
