@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     resources :settings, only:[:index]
     resources :roles, except:[:destroy]
   end
-
   namespace :store do
     resources :products, only:[:index, :new, :create, :show]
   end
+  get '*path' => redirect('/')
 end

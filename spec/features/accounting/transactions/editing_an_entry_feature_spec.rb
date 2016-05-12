@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 feature 'Editing an entry', type: :feature do
-  #  before (:each) do
-  #    user = FactoryGirl.create(:user)
-  #    login_as(user, :scope => :user)
-  #  end
+   before (:each) do
+     user = FactoryGirl.create(:user)
+     login_as(user, :scope => :user)
+   end
 
   given! (:entry) {create(:entry)}
 

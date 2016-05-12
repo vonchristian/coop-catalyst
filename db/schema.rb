@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20160508004807) do
     t.index ["type"], name: "index_accounts_on_type", using: :btree
   end
 
-  create_table "add_type_to_entries", force: :cascade do |t|
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "amounts", force: :cascade do |t|
     t.string   "type"
     t.integer  "account_id"

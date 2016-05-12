@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :role, class_name: "HumanResources::Role"
   has_one :occupation, class_name: "Members::Occupation"
   has_one :share_capital
   accepts_nested_attributes_for :occupation

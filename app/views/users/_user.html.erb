@@ -36,16 +36,18 @@
                 </div>
               </div>
               <div class="col-xs-6">
-                <%=@user.occupation.employer %>
+                <%=@user.occupation.try(:employer) %>
                 <br />
                 <span class="text-muted"><small><%=@user.position%></small></span>
                 <br />
-                <span class="text-muted"><small><%=@user.occupation.contact_number%></small></span>
+                <span class="text-muted"><small><%=@user.occupation.try(:contact_number)%></small></span>
 
               </div>
               <div class="col-xs-3 text-right">
-                <%=link_to edit_members_occupation_path(@user.occupation) do %>
-                  <a class="btn btn-sm btn-warning btn-icon edit-occupation-link" title="Edit Occupation"><i class="fa fa-pencil"></i></a>
+                <% if @user.occupation %>
+                  <%=link_to edit_members_occupation_path(@user.occupation) do %>
+                    <a class="btn btn-sm btn-warning btn-icon edit-occupation-link" title="Edit Occupation"><i class="fa fa-pencil"></i></a>
+                  <% end %>
                 <% end %>
               </div>
             </div>

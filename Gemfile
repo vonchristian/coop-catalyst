@@ -19,6 +19,7 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'devise'
 gem "ember-cli-rails"
+gem "pundit"
 group :development, :test do
    gem 'byebug'
    gem 'rspec-rails'

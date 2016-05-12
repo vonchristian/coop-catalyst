@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 feature 'Applying for a loan', type: :feature do
-  #  before (:each) do
-  #    user = FactoryGirl.create(:user)
-  #    login_as(user, :scope => :user)
-  #  end
+   before (:each) do
+     user = FactoryGirl.create(:user)
+     login_as(user, :scope => :user)
+   end
   given! (:user) { create(:user)}
   given! (:occupation) {create(:occupation, user: user)}
   given! (:loan_product) { create(:loan_product, name: "Salary Loan")}
