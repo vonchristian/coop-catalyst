@@ -27,11 +27,11 @@
               </li>
              <li class="<%#="active" if current_page? accounting_accounts_path %>">
                  <a href="/accounting/accounts">
-                     <i class="fa fa-file-text-o"></i>
+                     <i class="fa fa-briefcase"></i>
                      <p>Payroll</p>
                  </a>
               </li>
-              <li class="<%#="active" if current_page? accounting_accounts_path %>">
+              <li class="<%="active" if current_page? human_resources_settings_path %>">
                   <a href="/human_resources/settings">
                       <i class="fa fa-cog"></i>
                       <p>Settings</p>
@@ -68,7 +68,7 @@
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                  <i class="fa fa-user"></i>
 
-               <p><%#=current_user.email %></p>
+               <p><%=current_user.email %></p>
                <b class="caret"></b>
                            </a>
                            <ul class="dropdown-menu">
@@ -76,7 +76,7 @@
                              <li><a href="#">Notification 2</a></li>
                              <li><a href="#">Notification 3</a></li>
                              <li><a href="#">Notification 4</a></li>
-                            <li><%#=link_to "Sign out", destroy_user_session_path %></li>
+                            <li><%=link_to "Sign out",destroy_user_session_path, method: :delete %></li>
                            </ul>
                      </li>
                  </ul>

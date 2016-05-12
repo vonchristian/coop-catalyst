@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users", sessions: "users/sessions" }
+  authenticated :user do
+  root :to => 'users#index', :constraints => lambda { |request| request.env['warden'].user.nil? }, as: :unauthenticated_root
+end
+
+  root :to => 'monitoring/projects#index', :constraints => lambda { |request| request.env['warden'].user.role == 'monitoring_officer' if request.env['warden'].user }, as: :monitoring_root
+  root :to => 'members#index', :constraints => lambda { |request| request.env['warden'].user.role == 'project_engineer' if request.env['warden'].user }, as: :projects_root
+  root :to => 'accounting/accounts#index', :constraints => lambda { |request| request.env['warden'].user.role == 'accounting_officer' if request.env['warden'].user }, as: :accounting_root
+
   namespace :accounting do
       resources :accounts, except:[:destroy],module: :accounts
       resources :entries, except:[:destroy], module: :transactions
