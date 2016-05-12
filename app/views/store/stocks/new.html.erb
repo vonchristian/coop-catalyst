@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card">
+    <div class="header">
+      <h4 class="title"> Stock Details </h4>
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-5">
+          <%=simple_form_for [@product, @stock], url: :store_product_stocks do |f| %>
+            <%=f.error_notification %>
+            <%=f.input :quantity %>
+            <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+            <div class="modal-footer">
+              <%= link_to "Cancel", store_products_path, class: 'btn btn-warning pull-left' %>
+              <%= f.submit "Save Stock", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

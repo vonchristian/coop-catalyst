@@ -1,2 +1,3 @@
 <%=@product.name %>
 Quantity <%=@product.stocks.sum(:quantity) %>
+<%=link_to "Edit", edit_store_product_path(@product) %>

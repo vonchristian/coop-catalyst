@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Store::Product, :type => :model do
   describe "associations" do
     it { is_expected.to have_many :stocks }
+    it { is_expected.to have_many :line_items }
+    it { is_expected.to have_many :orders }
   end
   describe "validations" do
     it { is_expected.to validate_presence_of :name }
