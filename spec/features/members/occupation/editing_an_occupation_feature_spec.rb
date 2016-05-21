@@ -13,10 +13,10 @@ feature 'Editing an occupation', type: :feature do
     visit user_path(user)
 
     click_link "Edit Occupation"
-    fill_in "Employer", with: "Kiphodan Technologies, Inc."
-    fill_in "Position", with: "Software Developer"
-    fill_in "Employer address", with: "Lagawe, Ifugao"
-    fill_in "Contact number",  with: "000-999-899"
+    fill_in "members_occupation_employer", with: "Kiphodan Technologies, Inc."
+    fill_in "members_occupation_position", with: "Software Developer"
+    fill_in "members_occupation_employer_address", with: "Lagawe, Ifugao"
+    fill_in "members_occupation_contact_number",  with: "000-999-899"
 
     click_button "Update Occupation"
 

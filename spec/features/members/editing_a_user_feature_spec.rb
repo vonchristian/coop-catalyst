@@ -10,9 +10,9 @@ feature 'Editing a user', type: :feature do
   scenario 'with valid information' do
     visit user_path(user)
     click_link "Update"
-    fill_in "First name", with: "Von Christian"
-    fill_in "Middle name", with: "Pinosan"
-    fill_in "Last name", with: "Halip"
+    fill_in "First Name", with: "Von Christian"
+    fill_in "Middle Name", with: "Pinosan"
+    fill_in "Last Name", with: "Halip"
     fill_in "Email", with: "vc.halip@gmail.com"
     fill_in "Password", with: "secretpassword"
     fill_in "Password confirmation", with: "secretpassword"

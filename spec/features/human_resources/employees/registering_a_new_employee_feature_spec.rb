@@ -14,6 +14,7 @@ given! (:role) { create(:role, role: "Loan Officer")}
     fill_in "Last name", with: "Halip"
     choose "Loan Officer"
     fill_in "Email", with: "vc.halip@gmail.com"
+    fill_in "Mobile Number", with: "190909090"
     fill_in "Password", with: "secretpassword"
     fill_in "Password confirmation", with: "secretpassword"
     click_button "Register Employee"
