@@ -43,7 +43,7 @@ private
   def user_params
     user_params = params[:user]
     user_params ? user_params.permit(:photo, :first_name, :middle_name, :last_name,
-                                     :password, :password_confirmation, :email,
+                                     :password, :password_confirmation, :email, :mobile_number,
                                      occupation_attributes: [:employer, :employer_address, :position, :contact_number]) : {}
   end
   def load_users
