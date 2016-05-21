@@ -3,20 +3,19 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :authenticate_user!
   protect_from_forgery with: :exception
-<<<<<<< HEAD
   rescue_from Pundit::NotAuthorizedError, with: :permission_denied
 
-  # def after_sign_in_path_for(current_user)
-  #   if current_user.is_a?(User) && current_user.supply_officer?
-  #     supplies_url
-  #   elsif current_user.is_a?(User) && current_user.project_engineer?
-  #     projects_url
-  #   elsif current_user.is_a?(User) && current_user.accounting_officer?
-  #     accounting_petty_cash_index_url
-  #   elsif current_user.is_a?(User) && current_user.monitoring_officer?
-  #     monitoring_projects_url
-  #   end
-  # end
+  def after_sign_in_path_for(current_user)
+    if current_user.is_a?(User) && current_user.manager?
+      accounting_accounts_url
+    elsif current_user.is_a?(User) && current_user.project_engineer?
+      projects_url
+    elsif current_user.is_a?(User) && current_user.accounting_officer?
+      accounting_petty_cash_index_url
+    elsif current_user.is_a?(User) && current_user.monitoring_officer?
+      monitoring_projects_url
+    end
+  end
 
   private
   def permission_denied
@@ -26,16 +25,5 @@ class ApplicationController < ActionController::Base
     Supplies::Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
     cart = Supplies::Cart.create
-=======
-
-  private
-
-  def current_cart
-    Store::Cart.find(session[:cart_id])
-    rescue ActiveRecord::RecordNotFound
-    cart = Store::Cart.create
->>>>>>> develop
-    session[:cart_id] = cart.id
-    cart
   end
 end
