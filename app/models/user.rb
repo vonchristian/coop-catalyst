@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :share_capital
   accepts_nested_attributes_for :occupation
   delegate :position, to: :occupation, allow_nil: true
+  delegate :loan_officer?, :manager?, :bookkeeper?, :accounting_officer?, to: :role, allow_nil: true
   has_many :loans, class_name: "LoansSection::Loan"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,7 +18,7 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
-  validates :first_name, :middle_name, :last_name, presence: true
+  validates :first_name, :middle_name, :last_name, :mobile_number, presence: true
 
   def self.types
     %w(Employee Member)
