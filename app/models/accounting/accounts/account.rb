@@ -14,7 +14,7 @@ module Accounting
            Accounting::Accounts::Liability
            Accounting::Accounts::Equity
            Accounting::Accounts::Revenue
-           Accounting:Accounts::Expense)
+           Accounting::Accounts::Expense)
       end
       def balance(options={})
         if self.class == Account
