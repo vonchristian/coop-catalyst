@@ -39,7 +39,7 @@ module HumanResources
     private
     def employee_params
       params.require(:human_resources_employee).permit(:role_id, :photo, :first_name, :middle_name, :last_name,
-                                       :password, :password_confirmation, :email,
+                                       :password, :password_confirmation, :email, :mobile_number,
                                        occupation_attributes: [:employer, :employer_address, :position, :contact_number])
     end
   end

@@ -45,8 +45,8 @@
               </div>
               <div class="col-xs-3 text-right">
                 <% if @user.occupation %>
-                  <%=link_to edit_members_occupation_path(@user.occupation) do %>
-                    <a class="btn btn-sm btn-warning btn-icon edit-occupation-link" title="Edit Occupation"><i class="fa fa-pencil"></i></a>
+                  <%=link_to edit_members_occupation_path(@user.occupation), title: "Edit Occupation" do %>
+                    <span class="btn btn-warning btn-icon" data-toggle="tooltip" data-placement="bottom" title="Edit Occupation"><i class="fa fa-pencil"></i></span>
                   <% end %>
                 <% end %>
               </div>
