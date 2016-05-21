@@ -1,6 +1,18 @@
-<%= simple_form_for @account, url: :accounting_accounts do |f| %>
-  <%= f.input :code %>
-  <%= f.input :name %>
-  <%= f.input :type, collection: Accounting::Accounts::Account.types, as: :radio_buttons %>
-  <%=f.submit "Save Account" %>
-<% end %>
+<div class="col-md-5 col-md-offset-3">
+  <div class="card">
+    <div class="header">
+      <h5 class="title"> Account Details </h5>
+      <hr>
+    </div>
+    <div class="content">
+      <%= simple_form_for @account, url: :accounting_accounts do |f| %>
+        <%= f.input :code %>
+        <%= f.input :name %>
+        <%= f.input :type, collection: Accounting::Accounts::Account.types.map{|a| [a.sub("Accounting::Accounts::", "") ,a]}, as: :radio_buttons %>
+        <div class="modal-footer">
+          <%=f.submit "Save Account", class: "btn btn-success", data: {disable_with: "Creating Account..."} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

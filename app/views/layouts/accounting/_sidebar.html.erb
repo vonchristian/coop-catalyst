@@ -13,16 +13,16 @@
          </div>
 
          <ul class="nav">
-            <li class="<%#="active" if current_page? dashboard_path %>">
-                 <a href="/dashboards/index">
-                     <i class="fa fa-dashboard"></i>
+            <li class="<%="active" if current_page?(accounting_dashboard_index_path) || current_page?(accounting_index_path) %>">
+                 <a href="/accounting/dashboard">
+                       <i><%=image_tag("speedometer.png", width: 30, height: 30) %></i>
                      <p>Dashboard</p>
                  </a>
              </li>
-             <li class="<%#="active" if current_page? dashboard_path %>">
-                  <a href="/users">
-                      <i class="fa fa-users fa-icon"></i>
-                      <p>Members</p>
+             <li class="<%="active" if current_page? accounting_users_path %>">
+                  <a href="/accounting/users">
+                    <i><%=image_tag("avatar.png", width: 30, height: 30) %></i>
+                    <p>Members</p>
                   </a>
               </li>
              <li class="<%="active" if current_page? accounting_accounts_path %>">
@@ -38,9 +38,9 @@
                  </a>
              </li>
              <li class="<%#="active" if current_page? entries_path %>">
-                <a href="/entries">
-                    <i class="fa fa-money"></i>
-                    <p>Income Statement</p>
+                <a href="/accounting/income_statement">
+                  <i><%=image_tag("pie-chart-1.png", width: 30, height: 30) %></i>
+                  <p>Income Statement</p>
                 </a>
             </li>
 

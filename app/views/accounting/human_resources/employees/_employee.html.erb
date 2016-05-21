@@ -1,0 +1,34 @@
+
+<div class="col-lg-3 col-sm-6 col-md-3 col-xs-12">
+                       <div class="card card-user">
+                           <div class="image">
+                           </div>
+                           <div class="content">
+                               <div class="author">
+                                 <%=image_tag(employee.photo.url(:thumb), class: "avatar border-white") %>
+                                 <!-- <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..."/> -->
+                                 <h4 class="title"><%=employee.full_name %><br />
+                                    <a href="#"><small><%=employee.occupation.position %></small></a>
+                                 </h4>
+                               </div>
+                           </div>
+                           <hr>
+                           <div>
+                               <div class="row">
+                                   <div class="col-md-4 col-md-offset-1">
+                                     <h5><%=image_tag("pie-chart-1.png", width: 30, height: 30) %></h5>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <h5><%=number_to_currency 1200000 %><br /><small>Share Capital</small></h5>
+                                   </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-md-4 col-md-offset-1">
+                                       <h5><%=image_tag("piggy-bank.png", width: 30, height: 30) %></h5>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <h5><%=number_to_currency 1200000 %><br /><small>Savings Account</small></h5>
+                                     </div>
+                                   </div>
+                           </div>
+</div>

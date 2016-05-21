@@ -1,47 +1,73 @@
-<div class="col-md-8">
+<div class="col-md-8 col-md-offset-2">
   <div class="card">
     <div class="header">
-      <h4 class="title"> Member Details </h4>
+      <h4 class="title"> Member Profile </h4>
     </div>
     <div class="content">
-      <div class="row">
-        <div class="col-md-6">
+      <%= simple_form_for @user, remote: true  do |f| %>
+        <%=f.error_notification %>
+        <%if @user.photo.blank? %>
+          <center><%=image_tag("default.png", height: 70, width: 70, :class=>"img-circle center-block ") %></center>
+        <% else %>
+          <center><%= image_tag @user.photo.url(:large), class: 'center-block img-responsive img-rounded'%></center>
+        <% end %>
+        <center><%= f.input :photo, class: 'center-block', as: :file %></center>
+        <div class="row">
+          <div class="col-md-5">
+            <%=f.input :first_name, label: "First Name", autofocus: true, input_html: {oninput: "generate_email()", autocomplete: 'off'} %>
+          </div>
+          <div class="col-md-3">
+            <%=f.input :middle_name, label: "Middle Name" %>
+          </div>
+          <div class="col-md-4">
+            <%=f.input :last_name, label: "Last Name"%>
+          </div>
         </div>
-        <div class="col-md-5">
-          <%= simple_form_for @user do |f| %>
-            <%=f.error_notification %>
-            <%if @user.photo.blank? %>
-              <center><%=image_tag("default-small.png", :class=>"img-square center-block ") %></center>
-            <% else %>
-              <center><%= image_tag @user.photo.url(:large), class: 'center-block img-responsive img-rounded'%></center>
-            <% end %>
-            <center><%= f.input :photo, class: 'center-block', as: :file %></center>
-            <%=f.input :first_name, autofocus: true, input_html: {oninput: "generate_email()"} %>
-            <%=f.input :middle_name %>
-            <%=f.input :last_name, input_html: {oninput: "generate_email()"} %>
-            <% if @user.new_record? %>
-              <%=f.simple_fields_for :occupation do |ff| %>
-                <%=ff.input :position %>
-                <%=ff.input :employer %>
-                <%=ff.input :employer_address, label: "Address" %>
-                <%=ff.input :contact_number %>
-              <% end %>
-            <% end %>
-            <%=f.input :email, placeholder: '@alfalfa.com' %>
-            <%=f.input :password %>
-            <%=f.input :password_confirmation %>
+        <small> <%=image_tag("phone-call.png", height: 20, width: 20) %> &nbsp; Contact Information </small>
+        <hr>
 
-            <div class="modal-footer">
-              <% if @user.new_record? %>
-                <%=f.submit 'Register Member', class: 'btn btn-primary', data: {disable_with: "Saving Member..."} %>
-              <% else %>
-                <%=f.submit 'Update Member', class: 'btn btn-primary', data: {disable_with: "Updating Member..."} %>
-              <% end %>
-              <span class="pull-left"><%= link_to "Cancel", @user,  class: "btn btn-default"%></span>
+        <div class="row">
+          <div class="col-md-6">
+            <%=f.input :email %>
+          </div>
+          <div class="col-md-6">
+            <%=f.input :mobile_number %>
+          </div>
+        </div>
+        <% if @user.new_record? %>
+          <%=f.simple_fields_for :occupation do |ff| %>
+          <small data-toggle="tooltip" data-placement="left" title="Occupation Details of Member incsad jlk adhsjka sdasjdahksjd casdeajshdajk sadasdhasjkda casdasdjk"> <%=image_tag("engineer.png", height: 20, width: 20) %> &nbsp; Occupation Information </small>
+          <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <%=ff.input :employer %>
+              </div>
+              <div class="col-md-6">
+                <%=ff.input :position %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%=ff.input :employer_address, label: "Employer Address" %>
+              </div>
+              <div class="col-md-6">
+                <%=ff.input :contact_number, label: "Employer Contact" %>
+              </div>
             </div>
           <% end %>
+        <% end %>
+          <small> <%=image_tag("engineer.png", height: 20, width: 20) %> Account Details </small><hr>
+        <%=f.input :password %>
+        <%=f.input :password_confirmation %>
+        <div class="modal-footer">
+          <% if @user.new_record? %>
+            <%=f.submit 'Register Member', class: 'btn btn-primary', data: {disable_with: "Saving Member..."} %>
+          <% else %>
+            <%=f.submit 'Update Member', class: 'btn btn-primary', data: {disable_with: "Updating Member..."} %>
+          <% end %>
+          <span class="pull-left"><%= link_to "Cancel", @user,  class: "btn btn-default"%></span>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
