@@ -1,10 +1,13 @@
 module Accounting
   module Accounts
     class Account < ApplicationRecord
+      has_many :amounts
       has_many :credit_amounts, :extend => AmountsExtension, class_name: "Accounting::CreditAmount"
       has_many :debit_amounts, :extend => AmountsExtension, class_name: "Accounting::DebitAmount"
       has_many :credit_entries, :through => :credit_amounts, :source => :entry
       has_many :debit_entries, :through => :debit_amounts, :source => :entry
+      has_many :entries, through: :amounts, source: :entry
+
 
       validates :code, :name, uniqueness: true, presence: true
       validates :type, presence: true
