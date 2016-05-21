@@ -7,10 +7,13 @@ end
   root :to => 'monitoring/projects#index', :constraints => lambda { |request| request.env['warden'].user.role == 'monitoring_officer' if request.env['warden'].user }, as: :monitoring_root
   root :to => 'members#index', :constraints => lambda { |request| request.env['warden'].user.role == 'project_engineer' if request.env['warden'].user }, as: :projects_root
   root :to => 'accounting/accounts#index', :constraints => lambda { |request| request.env['warden'].user.role == 'accounting_officer' if request.env['warden'].user }, as: :accounting_root
-
+  root :to => 'accounting/accounts#index', :constraints => lambda { |request| request.env['warden'].user.role == 'manager' if request.env['warden'].user }, as: :manager_root
+  resources :accounting, only:[:index]
   namespace :accounting do
       resources :accounts, except:[:destroy],module: :accounts
       resources :entries, except:[:destroy], module: :transactions
+      resources :dashboard, only:[:index]
+      resources :users, only: [:index]
   end
   resources :users, except:[:destroy] do
     resources :share_capitals, only:[:new, :create, :show]
@@ -50,5 +53,5 @@ end
     resources :carts, only: [:show, :destroy]
     resources :orders, only: [:index, :new, :create]
   end
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 end
