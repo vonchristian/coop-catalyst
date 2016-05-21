@@ -1,0 +1,25 @@
+
+  <ul class="list-unstyled team-members">
+    <li id="current_item">
+      <div class="row">
+        <div class="col-xs-3">
+
+            <span><%=number_to_currency loan.amount %></span>
+        </div>
+        <div class="col-xs-4">
+          <%=loan.loan_product.name%>
+          <br />
+          <span class="text-success"><small><%=loan.date.strftime("%B %e, %Y")%></small></span>
+        </div>
+        <div class="col-xs-2 text-left">
+          <%=link_to "View Details", loan, class: "btn btn-info btn-sm" %>
+        </div>
+        <div class="col-xs-3 text-right">
+          <%#=link_to line_item, method: :delete, confirm: 'Are you sure?' do %>
+          <span class="btn btn-warning btn-icon btn-xs pull-right" title="Pending for Approval"><i class="fa fa-times"></i> </span>
+          <%# end %>
+        </div>
+      </div>
+      <hr>
+    </li>
+  </ul>

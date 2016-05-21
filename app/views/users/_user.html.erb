@@ -88,5 +88,5 @@
       </div>
     </div>
     <% else %>
-      <%=render @user.share_capital %>
+      <%=render "share_capitals/share_capital", share_capital: @user.share_capital %>
     <% end %>
