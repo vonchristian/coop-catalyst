@@ -1,4 +1,4 @@
-<% loans.order(:date).reverse.each do |loan| %>
+
   <ul class="list-unstyled team-members">
     <li id="current_item">
       <div class="row">
@@ -12,15 +12,14 @@
           <span class="text-success"><small><%=loan.date.strftime("%B %e, %Y")%></small></span>
         </div>
         <div class="col-xs-2 text-left">
-          <%#=number_to_currency line_item.total_price %>
+          <%=link_to "View Details", loan, class: "btn btn-info btn-sm" %>
         </div>
-        <div class="col-xs-2 text-right">
+        <div class="col-xs-3 text-right">
           <%#=link_to line_item, method: :delete, confirm: 'Are you sure?' do %>
-          <span class="btn btn-danger btn-icon btn-xs"><i class="fa fa-times"></i> </span>
+          <span class="btn btn-warning btn-icon btn-xs pull-right" title="Pending for Approval"><i class="fa fa-times"></i> </span>
           <%# end %>
         </div>
       </div>
       <hr>
     </li>
   </ul>
-<% end %>

@@ -2,7 +2,7 @@
   <div class="col-lg-4 col-md-5">
     <div class="card card-user">
       <div class="image">
-        <%= image_tag "hero.jpg", class: "img-square center-block", alt: "user profile picture" %>
+
       </div>
       <div class="content">
         <div class="author">
@@ -25,17 +25,13 @@
     </div>
     <div class="card">
       <div class="header">
-        <h4 class="title">Info</h4>
+        <h5 class="title">Info</h5>
       </div>
       <div class="content">
         <ul class="list-unstyled team-members">
           <li>
             <div class="row">
-              <div class="col-xs-3">
-                <div class="avatar">
-                </div>
-              </div>
-              <div class="col-xs-6">
+              <div class="col-xs-8">
                 <%=@user.occupation.try(:employer) %>
                 <br />
                 <span class="text-muted"><small><%=@user.position%></small></span>
@@ -56,26 +52,41 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card">
+  <div class="col-md-8">
+    <div class="card card-user">
       <div class="header">
-        <h4 class="title"> Loans
-          <span class="pull-right"><%=link_to "New Loan", new_loans_section_user_loan_path(@user) %>
-        </h4>
+        <h5 class="title"> Loans
+          <span class="pull-right"><%=link_to new_loans_section_user_loan_path(@user), title:  "New Loan" do  %>
+            <span class="btn btn-danger btn-icon" data-toggle="tooltip" data-placement="top" title="New Loan"><i class="fa fa-plus"></i></span>
+          <% end %>
+        </span>
+        </h5>
+        <hr>
       </div>
       <div class="content">
+        <%=render @user.loans %>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="header">
-        <h4 class="title"> Share Capital
-          <span class="pull-right"><%=link_to "Open Share Capital Account", new_user_share_capital_path(@user) %>
-        </h4>
-      </div>
-      <div class="content">
+  <% if @user.share_capital.blank? %>
+    <div class="col-md-4">
+      <div class="card card-user">
+        <div class="header">
+          <h5 class="title"> <center> Share Capital</center> </h5>
+        </div>
+        <div class="content">
+          <%=link_to new_user_share_capital_path(@user), title: "Open Share Capital Account" do %>
+            <span data-toggle="tooltip" data-placement="bottom" title="Open Share Capital Account">
+              <%=image_tag("pie-chart-1.png", height: 70, width: 70, class: "center-block img-responsive") %>
+            </span>
+
+          <% end %>
+          <br>
+          <small><center>Open a Share Capital Account for <br> <%=@user.full_name %> </center></small>
+
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    <% else %>
+      <%=render @user.share_capital %>
+    <% end %>

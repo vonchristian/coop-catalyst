@@ -1,12 +1,53 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="card">
-      <div class="header">
-        <h4 class="title"> Loan Details </h4>
-      </div>
+<div class="col-lg-8">
+  <div class="card card-user">
+     <div class="image">
+     </div>
+     <div class="content">
+         <div class="author">
+           <%=image_tag(@loan.user.photo.url(:thumb), class: "avatar border-white") %>
+           <!-- <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..."/> -->
+           <h4 class="title"><%=@loan.user.full_name %><br />
+              <a href="#"><small><%=@loan.user.occupation.try(:position) %></small></a>
+           </h4>
+         </div>
+     </div>
+     <hr>
       <div class="content">
+        <div class="row">
+          <div class="col-md-8">
+            <ul class="list-unstyled team-members">
+              <li>
+                <div class="row">
+                  <div class="col-md-1">
+                    <%=image_tag("check.png", height: 30, width: 30) %> &nbsp;
+                  </div>
+                  <div class="col-md-5">
+                    Loan Amount
+                  </div>
+                  <div class="col-md-6">
+                    <%=number_to_currency @loan.amount %>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-md-1">
+                    <%=image_tag("check.png", height: 30, width: 30) %> &nbsp;
+                  </div>
+                  <div class="col-md-5">
+                    Loan Amount
+                  </div>
+                  <div class="col-md-6">
+                    <%=number_to_currency @loan.amount %>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-5">
+          </div>
+        </div>
         <%=@loan.loan_product.name %>
-        <%=number_to_currency @loan.amount %>
         <%=link_to "Approve", new_loans_section_loan_approval_path(@loan) %>
       </div>
     </div>
@@ -15,35 +56,11 @@
 <div class="col-md-4">
   <div class="card">
     <div class="header">
-      <h4 class="title"> Approval Status </h4>
+      <center class="title"> Approval Status </center>
       <hr>
     </div>
     <div class="content">
-      <% HumanResources::Employee.loan_officers.each do |user| %>
-      <ul class="list-unstyled team-members">
-      <li>
-        <div class="row">
-          <div class="col-xs-3">
-            <%=image_tag(user.photo.url(:small), class: "img-circle")%>
-          </div>
-    <div class="col-xs-6">
-      <%=user.full_name %><br />
-      <%=user.role %>
-    </div>
-    <div class="col-xs-3">
-
-      <% if user.approved_loan(@loan) %>
-      <btn class="btn btn-success active btn-icon" title="Approved "><i class="fa fa-check"></i></span>
-        <% else %>
-      <%=link_to new_loans_section_loan_approval_path(@loan) do %>
-        <btn class="btn btn-warning btn-icon" title="Approve Loan"><i class="fa fa-thumbs-up"></i></btn>
-        <btn class="btn btn-danger btn-icon" title="Disapprove Loan"><i class="fa fa-thumbs-down"></i></btn>
-      <% end %>
-      <% end %>
-  </div>
-</li>
-</ul>
-      <% end %>
+      <%#=render  'human_resources/employees'%>
     </div>
   </div>
 </div>

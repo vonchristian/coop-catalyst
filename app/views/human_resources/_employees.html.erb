@@ -1,0 +1,24 @@
+
+<ul class="list-unstyled team-members">
+<li>
+  <div class="row">
+    <div class="col-xs-3">
+      <%=image_tag(user.photo.url(:small), class: "img-circle")%>
+    </div>
+<div class="col-xs-6">
+<%=user.full_name %><br />
+<%=user.role %>
+</div>
+<div class="col-xs-3">
+
+<% if user.approved_loan(@loan) %>
+<btn class="btn btn-success active btn-icon" title="Approved "><i class="fa fa-check"></i></span>
+  <% else %>
+<%=link_to new_loans_section_loan_approval_path(@loan) do %>
+  <btn class="btn btn-warning btn-icon" title="Approve Loan"><i class="fa fa-thumbs-up"></i></btn>
+  <btn class="btn btn-danger btn-icon" title="Disapprove Loan"><i class="fa fa-thumbs-down"></i></btn>
+<% end %>
+<% end %>
+</div>
+</li>
+</ul>

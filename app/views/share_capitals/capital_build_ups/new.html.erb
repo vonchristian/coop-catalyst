@@ -1,33 +1,33 @@
-<div class="container">
-<div class="box box-solid">
-<div class="box-header with-border">
-<h4>Capital Build Up Details</h4>
-</div>
-<div class="box-body">
-  <div class="row">
-  <div class="col-md-5 border-right">
+<div class="col-lg-5 col-md-offset-3">
+  <div class="card card-user">
+    <div class="header">
+      <div class="image">
+      </div>
+        <div class="author">
+          <%=image_tag(@share_capital.account_owner.photo.url(:thumb), class: "avatar border-white") %>
+          <h4 class="title"><%=@share_capital.account_owner.full_name %><br />
+            <a href="#"><small><%=@share_capital.account_owner.occupation.try(:position) %></small></a>
+          </h4>
+        </div>
+      </div>
+      <div class="content">
+      <%=simple_form_for [@share_capital, @capital_build_up], url: :share_capital_capital_build_ups do |f| %>
+        <%=f.error_notification %>
+        <%=f.input :description, input_html: { value: "Capital Build Up Transaction of #{@share_capital.account_owner.full_name}" }, as: :hidden  %>
+        <%=f.input :date, as: :string, input_html: {class: "datepicker"} %>
+        <%=f.input :reference_number %>
+        <%=f.simple_fields_for :debit_amounts do |c|  %>
+          <%=c.input :amount, label: "Amount" %>
+          <%=c.input :account,label: "Debit Account", input_html: { value: "Cash on Hand"}, as: :hidden %>
+        <% end %>
+        <%=f.simple_fields_for :credit_amounts do |d|  %>
+          <%=d.input :amount, label: "Credit amount", readonly: true, as: :hidden %>
+          <%=d.input :account,label: "Credit Account", input_html: {value: "Share Capital"}, as: :hidden %>
+        <% end %>
+        <div class="modal-footer">
+          <%=f.submit "Save Capital Build Up", class: "btn btn-primary btn-block", data:{disable_with: "Saving.."} %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="col-md-5 col-md-offset-1">
-<%=simple_form_for [@share_capital, @capital_build_up], url: :share_capital_capital_build_ups do |f| %>
-<%=f.input :description %>
-<%=f.input :reference_number%>
-<%=f.input :date, as: :string, input_html: {class: "datepicker"} %>
-<h4 class="text-uppercase">Debit Account</h4>
-<%=f.simple_fields_for :debit_amounts do |c|  %>
-<%=c.input :amount, label: "Debit amount" %>
-<%=c.input :account,label: "Debit Account", input_html: {id: 'debit_account'} %>
-  <% end %>
-<h4 class="text-uppercase">Credit Account</h4>
-<%=f.simple_fields_for :credit_amounts do |d|  %>
-<%=d.input :amount, label: "Credit amount"%>
-<%=d.input :account,label: "Credit Account", input_html: {id: 'credit_account'} %>
-  <% end %>
-
-  <div class="modal-footer">
-<%=f.submit "Save Capital Build Up", class: "btn btn-primary", data:{disable_with: "Saving.."} %>
-<%=link_to "or Cancel", share_capital_path(@share_capital), class: "btn btn-default pull-left", data: {disable_with: "Cancelling..."} %>
-<% end %>
-</div>
-</div>
-</div>
 </div>

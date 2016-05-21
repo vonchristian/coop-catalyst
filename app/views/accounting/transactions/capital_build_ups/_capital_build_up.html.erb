@@ -1,23 +1,15 @@
 <% capital_build_ups.order(:date).reverse.each do |capital_build_up| %>
   <ul class="list-unstyled team-members">
-    <li id="current_item">
+    <li>
       <div class="row">
-        <div class="col-xs-3">
-
+        <div class="col-xs-4">
             <span><%=number_to_currency capital_build_up.debit_amounts.last.amount %></span>
         </div>
         <div class="col-xs-4">
           <%=capital_build_up.date.strftime("%B %e, %Y")%>
-          <br />
-          <span class="text-success"><small><%=capital_build_up.date.strftime("%B %e, %Y")%></small></span>
-        </div>
-        <div class="col-xs-2 text-left">
-          <%#=number_to_currency line_item.total_price %>
         </div>
         <div class="col-xs-2 text-right">
-          <%#=link_to line_item, method: :delete, confirm: 'Are you sure?' do %>
           <span class="btn btn-success btn-icon btn-xs"><i class="fa fa-check"></i> </span>
-          <%# end %>
         </div>
       </div>
       <hr>
