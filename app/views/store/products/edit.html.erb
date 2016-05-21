@@ -11,11 +11,6 @@
             <%=f.input :description %>
             <%=f.input :price %>
             <%=f.input :unit %>
-
-            <%=f.simple_fields_for :stocks do |ff| %>
-            <%=ff.input :quantity %>
-            <%=ff.input :date, as: :string, input_html: { class: "datepicker" } %>
-            <% end %>
             <div class="modal-footer">
               <%=f.submit "Save Product", class: "btn btn-primary" %>
             </div>

@@ -39,8 +39,16 @@ end
     resources :settings, only:[:index]
     resources :roles, except:[:destroy]
   end
+
+  resources :store, only:[:index], module: :store
+
   namespace :store do
-    resources :products, only:[:index, :new, :create, :show]
+    resources :products, only:[:index, :new, :create, :show, :edit, :update] do
+      resources :stocks, only: [:new, :create]
+    end
+    resources :line_items, only: [:new, :create, :destroy]
+    resources :carts, only: [:show, :destroy]
+    resources :orders, only: [:index, :new, :create]
   end
   get '*path' => redirect('/')
 end

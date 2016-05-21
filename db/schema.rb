@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508004807) do
+ActiveRecord::Schema.define(version: 20160508145143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 20160508004807) do
     t.index ["loan_id"], name: "index_approvals_on_loan_id", using: :btree
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "entries", force: :cascade do |t|
     t.string   "reference_number"
     t.datetime "date"
@@ -72,6 +77,18 @@ ActiveRecord::Schema.define(version: 20160508004807) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.index ["loan_product_id"], name: "index_interest_rates_on_loan_product_id", using: :btree
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.decimal  "quantity",   default: "1.0"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "order_id"
+    t.index ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+    t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_line_items_on_product_id", using: :btree
   end
 
   create_table "loan_fees", force: :cascade do |t|
@@ -112,6 +129,21 @@ ActiveRecord::Schema.define(version: 20160508004807) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["user_id"], name: "index_occupations_on_user_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.string   "customer_type"
+    t.string   "name"
+    t.string   "address"
+    t.string   "mobile_number"
+    t.string   "email"
+    t.integer  "payment_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "date"
+    t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+    t.index ["customer_type"], name: "index_orders_on_customer_type", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -178,6 +210,8 @@ ActiveRecord::Schema.define(version: 20160508004807) do
 
   add_foreign_key "approvals", "loans"
   add_foreign_key "interest_rates", "loan_products"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "products"
   add_foreign_key "loan_fees", "loan_products"
   add_foreign_key "loans", "loan_products"
   add_foreign_key "loans", "users"
