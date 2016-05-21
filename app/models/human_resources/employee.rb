@@ -2,7 +2,6 @@ module HumanResources
   class Employee < User
       belongs_to :role, foreign_key: 'role_id'
       has_many :approved_loans, class_name: "LoansSection::Approval", foreign_key: 'approver_id'
-      delegate :loan_officer?, :manager?, :bookkeeper?, to: :role
       def self.matches_role(role)
         self.where(role: role)
       end
