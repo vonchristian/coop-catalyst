@@ -3,7 +3,8 @@
     <div class="card">
       <div class="header">
         <h4 class="title">General Ledger
-          <span class="pull-right"><%=link_to "New Account", new_accounting_account_path, class: 'btn btn-primary' %></span>
+          <span class="pull-right"><%=link_to "New Account", new_accounting_account_path, class: 'btn btn-primary', remote: true %></span>
+          <div class="new-account"></div>
         </h4>
         <hr />
       </div>
@@ -18,16 +19,8 @@
               <th>Credit Balance</th>
             </tr>
           </thead>
-          <tbody>
-            <% @accounts.each do |account| %>
-              <tr>
-                <td><%=account.code %></td>
-                <td><%= account.name %></td>
-                <td><%=account.type.sub("Accounting::Accounts::", "") %></td>
-                <td><%=number_to_currency account.debits_balance %></td>
-                <td><%=number_to_currency account.credits_balance %></td>
-              </tr>
-            <% end %>
+          <tbody class="account-index">
+            <%=render "index" %>
           </tbody>
         </table>
       </div>

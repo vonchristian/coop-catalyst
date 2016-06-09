@@ -1,0 +1,38 @@
+.sidebar:after, .sidebar:before, .sidebar[data-background-color="purple"]:after, .sidebar[data-background-color="purple"]:before,
+.off-canvas-sidebar:after,
+.off-canvas-sidebar:before,
+.off-canvas-sidebar[data-background-color="purple"]:after,
+.off-canvas-sidebar[data-background-color="purple"]:before {
+  background-color: #62488A;
+}
+.sidebar .logo, .sidebar[data-background-color="purple"] .logo,
+.off-canvas-sidebar .logo,
+.off-canvas-sidebar[data-background-color="purple"] .logo {
+  border-bottom: 1px solid rgba(102, 97, 91, 0.3);
+}
+.sidebar .logo p, .sidebar[data-background-color="purple"] .logo p,
+.off-canvas-sidebar .logo p,
+.off-canvas-sidebar[data-background-color="purple"] .logo p {
+  color: #F1F1F1;
+}
+.sidebar .logo .simple-text, .sidebar[data-background-color="purple"] .logo .simple-text,
+.off-canvas-sidebar .logo .simple-text,
+.off-canvas-sidebar[data-background-color="purple"] .logo .simple-text {
+  color: #F1F1F1;
+}
+.sidebar .nav li:not(.active) > a, .sidebar[data-background-color="purple"] .nav li:not(.active) > a,
+.off-canvas-sidebar .nav li:not(.active) > a,
+.off-canvas-sidebar[data-background-color="purple"] .nav li:not(.active) > a {
+  color: #F1F1F1;
+}
+.sidebar .nav .divider, .sidebar[data-background-color="purple"] .nav .divider,
+.off-canvas-sidebar .nav .divider,
+.off-canvas-sidebar[data-background-color="purple"] .nav .divider {
+  background-color: rgba(102, 97, 91, 0.2);
+}
+
+.sidebar[data-active-color="white"] .nav li.active > a,
+.off-canvas-sidebar[data-active-color="white"] .nav li.active > a {
+  color: #FFFFFF;
+  opacity: 1;
+}

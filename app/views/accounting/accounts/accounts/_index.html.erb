@@ -1,0 +1,9 @@
+<% @accounts.each do |account| %>
+  <tr>
+    <td><%=account.code %></td>
+    <td><%= account.name %></td>
+    <td><%=account.type.sub("Accounting::Accounts::", "") %></td>
+    <td><%=number_to_currency account.debits_balance %></td>
+    <td><%=number_to_currency account.credits_balance %></td>
+  </tr>
+<% end %>
